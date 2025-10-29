@@ -1,20 +1,44 @@
 # Soil Analysis using KMeans Clustering
 
 ## Project Overview
-This project analyzes soil nutrient data, specifically focusing on Nitrogen levels and pH values, using KMeans clustering to identify patterns and groupings in soil samples. The analysis aims to guide lime application and fertilizer optimization strategies for improved soil health and sustainability.
+This project analyzes soil nutrient data, specifically focusing on Nitrogen levels and pH values, using KMeans clustering to identify patterns and groupings in soil samples. The analysis reveals relationships between nitrogen content and soil acidity, helping identify regions that may require lime application or adjusted fertilization strategies. These insights contribute to improved soil health management and sustainable agricultural practices.
+
+## Project Context
+- **Domain**: Canada Agriculture
+- **Focus**: Nitrogen vs Soil pH Analysis
+- **Goal**: Identify soil management zones through clustering analysis
 
 ## Author
 - Name: Albright Maduka Ifechukwude
 - Student ID: 9053136
 - Course: PROG8431 - Data Analysis Mathematics and Algorithm Model
 
+## Key Findings
+The K-means analysis identified three distinct soil clusters:
+1. **Low-N/Near-Neutral**: ~45 N, 6.9 pH - Stable soils with balanced conditions
+2. **Moderate-N/Slightly-Acidic**: ~95 N, 6.2 pH - Transition zone requiring monitoring
+3. **High-N/More-Acidic**: ~140 N, 5.7 pH - Areas requiring potential lime application
+
+These clusters provide valuable insights for:
+- Targeted lime application in acidic zones
+- Optimized nitrogen fertilization strategies
+- Identification of stable soil regions
+
 ## Features
-- Data cleaning and preprocessing of soil nutrient data
-- Feature scaling using StandardScaler
-- Optimal cluster determination using both Elbow Method and Silhouette Score
-- KMeans clustering implementation
-- Visualization of cluster distributions and results
-- Statistical summary of cluster characteristics
+- Automated detection and extraction of Nitrogen and pH columns
+- Robust data cleaning with configurable bounds for N (0-200) and pH (2.5-9.5)
+- Feature standardization using StandardScaler
+- Optimal cluster determination using:
+  - Elbow Method for variance explanation
+  - Silhouette Score for cluster quality
+- Interactive visualizations:
+  - Feature distributions (histograms and boxplots)
+  - Cluster scatter plots with centroids
+  - Model selection curves
+- Comprehensive statistical summaries:
+  - Per-cluster statistics (mean, min, max)
+  - Sample counts per cluster
+  - Centroid coordinates in original units
 
 ## Project Structure
 ```
@@ -36,20 +60,29 @@ ClusteringKMeans_Workshop/
 
 ## Methodology
 1. Data Loading and Preprocessing
-   - Load soil nutrient data
-   - Clean and filter data based on N and pH bounds
-   - Scale features for clustering
+   - Automated loading and column detection
+   - Smart cleaning with regex-based numeric conversion
+   - Outlier removal using configurable bounds
+   - Feature standardization for unbiased clustering
 
-2. Clustering Analysis
-   - Determine optimal number of clusters (k) using:
-     - Elbow Method
-     - Silhouette Score
-   - Apply KMeans clustering
-   - Visualize results and cluster distributions
+2. Model Selection
+   - Systematic evaluation of k values (2-6)
+   - Dual criteria approach:
+     - Elbow Method: Assesses variance explanation
+     - Silhouette Score: Measures cluster quality
+   - Automated selection of optimal k
 
-3. Results Analysis
-   - Generate cluster summaries with statistical measures
-   - Save processed data and cluster centers for reproducibility
+3. Clustering Analysis
+   - K-means implementation with multiple initializations
+   - Standardized space clustering
+   - Back-transformation to original units
+   - Comprehensive visualization suite
+
+4. Results Interpretation
+   - Statistical profiling of clusters
+   - Identification of management zones
+   - Agricultural implications analysis
+   - Export of reproducible results
 
 ## Output Files
 - `Clustered_Soil_Data.csv`: Contains the original data with cluster assignments
